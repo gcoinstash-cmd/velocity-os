@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: velocity-exotic-fleet
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
