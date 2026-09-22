@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Qualification & Insurance Verification — VELOCITY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            veloDark: '#0A0A0B',
+            veloCard: '#121216',
+            veloCyan: '#06B6D4',
+            veloCobalt: '#2563EB'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0A0A0B] text-white selection:bg-[#06B6D4] selection:text-black">
+
+  <header class="sticky top-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#06B6D4] to-[#2563EB] p-[2px] flex items-center justify-center">
+          <div class="w-full h-full bg-[#0A0A0B] rounded-[10px] flex items-center justify-center font-grotesk font-black text-lg text-white">⚡</div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-grotesk font-bold text-xl tracking-tight text-white">VELOCITY.OS</span>
+          <span class="text-[9px] font-mono-velo tracking-widest text-[#06B6D4] uppercase">Verification</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="fleet" class="hover:text-[#06B6D4]">Fleet Showroom</a>
+        <a href="experience" class="hover:text-[#06B6D4]">Track & Canyon Runs</a>
+        <a href="insurance" class="text-[#06B6D4] font-semibold">Driver Verification</a>
+        <a href="book" class="hover:text-[#06B6D4]">Reserve Fleet</a>
+        <a href="admin" class="hover:text-[#06B6D4] text-xs font-mono-velo border border-white/10 px-3 py-1.5 rounded-lg">Fleet Tower [⚡]</a>
+      </nav>
+
+      <span class="text-xs font-mono-velo text-zinc-400">Strictly 25+ Age Required</span>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="py-16 max-w-3xl mx-auto px-6">
+    <div class="mb-10 text-center">
+      <span class="text-xs font-mono-velo text-[#06B6D4] uppercase tracking-widest">QUALIFICATION PROTOCOL</span>
+      <h1 class="text-3xl sm:text-5xl font-grotesk font-bold text-white mt-2">Driver & Insurance Verification</h1>
+      <p class="text-zinc-400 text-sm mt-3">All exotic supercar rentals require verified full-coverage transferable auto insurance and a primary driver age 25 or older.</p>
+    </div>
+
+    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl relative">
+      <form id="insurance-form" class="space-y-6">
+        <div>
+          <label class="block text-xs font-mono-velo text-[#06B6D4] uppercase tracking-wider mb-2">1. Driver Legal Name</label>
+          <input type="text" id="ins_name" required placeholder="Full Name as appears on Driver License" class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono-velo text-zinc-400 uppercase tracking-wider mb-2">2. Driver License Number</label>
+            <input type="text" required placeholder="State / Country & Number" class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+          </div>
+          <div>
+            <label class="block text-xs font-mono-velo text-zinc-400 uppercase tracking-wider mb-2">3. Date of Birth (25+)</label>
+            <input type="date" required class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono-velo text-[#06B6D4] uppercase tracking-wider mb-2">4. Primary Auto Insurance Provider</label>
+          <input type="text" required placeholder="e.g. Chubb, Geico, State Farm, Progressive Platinum" class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+        </div>
+
+        <div class="p-4 rounded-xl bg-black/60 border border-white/10 space-y-2 text-xs font-mono-velo text-zinc-400">
+          <div class="flex items-center gap-2 text-white font-bold">
+            <span class="text-[#06B6D4]">✓</span> Mandatory Minimum Limits:
+          </div>
+          <p>&bull; $250,000 / $500,000 Bodily Injury Liability</p>
+          <p>&bull; $100,000 Property Damage</p>
+          <p>&bull; Comprehensive & Collision with max $2,500 deductible</p>
+        </div>
+
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-black/40 border border-white/10 cursor-pointer">
+          <input type="checkbox" required class="mt-1 accent-[#06B6D4]">
+          <span class="text-xs text-zinc-300 leading-relaxed">
+            I verify that I hold an active, un-suspended driver license and valid transferable full-coverage insurance. I acknowledge my security deposit will be held in escrow until vehicle return.
+          </span>
+        </label>
+
+        <button type="submit" class="w-full btn-cyan justify-center py-4 text-sm font-mono-velo font-bold uppercase tracking-widest">
+          Submit Driver Clearance &bull; Authorize Release &rarr;
+        </button>
+      </form>
+
+      <div id="ins-modal" class="hidden absolute inset-0 bg-[#0A0A0B]/95 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 flex flex-col items-center justify-center text-center space-y-6 z-20">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-2xl text-emerald-400">
+          ✓
+        </div>
+        <div>
+          <span class="text-xs font-mono-velo text-emerald-400 uppercase tracking-widest">CLEARANCE CONFIRMED</span>
+          <h2 class="text-3xl font-grotesk font-bold text-white mt-1">Driver Profile Verified</h2>
+          <p class="text-sm font-mono-velo text-zinc-400 mt-2">Driver Certificate: #DVR-ACTIVE</p>
+        </div>
+        <p class="text-sm text-zinc-300 max-w-md">
+          Your insurance policy and license credentials have been logged in the Velocity Fleet Tower. Your reserved vehicle is cleared for tarmac hand-off.
+        </p>
+        <div class="flex gap-4">
+          <a href="fleet" class="btn-ghost-velo text-xs font-mono-velo">Return to Fleet</a>
+          <a href="admin" class="btn-cyan text-xs font-mono-velo font-bold uppercase">Inspect Fleet Tower OS &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-black text-zinc-500 text-xs font-mono-velo border-t border-white/10 text-center">
+    <p>VELOCITY &bull; Strict Driver Due Diligence &bull; 100% Escrow Protection</p>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('insurance-form');
+      const modal = document.getElementById('ins-modal');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        modal.classList.remove('hidden');
+        window.showToast('Driver Credentials Cleared', 'cyan');
+      });
+    });
+  </script>
+</body>
+</html>
