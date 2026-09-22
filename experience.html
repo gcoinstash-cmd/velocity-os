@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Track & Canyon Experiences — VELOCITY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            veloDark: '#0A0A0B',
+            veloCard: '#121216',
+            veloCyan: '#06B6D4',
+            veloCobalt: '#2563EB'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0A0A0B] text-white selection:bg-[#06B6D4] selection:text-black">
+
+  <header class="sticky top-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#06B6D4] to-[#2563EB] p-[2px] flex items-center justify-center">
+          <div class="w-full h-full bg-[#0A0A0B] rounded-[10px] flex items-center justify-center font-grotesk font-black text-lg text-white">⚡</div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-grotesk font-bold text-xl tracking-tight text-white">VELOCITY.OS</span>
+          <span class="text-[9px] font-mono-velo tracking-widest text-[#06B6D4] uppercase">Experiences</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="fleet" class="hover:text-[#06B6D4]">Fleet Showroom</a>
+        <a href="experience" class="text-[#06B6D4] font-semibold">Track & Canyon Runs</a>
+        <a href="insurance" class="hover:text-[#06B6D4]">Driver Verification</a>
+        <a href="book" class="hover:text-[#06B6D4]">Reserve Fleet</a>
+        <a href="admin" class="hover:text-[#06B6D4] text-xs font-mono-velo border border-white/10 px-3 py-1.5 rounded-lg">Fleet Tower [⚡]</a>
+      </nav>
+
+      <a href="book" class="btn-cyan text-xs uppercase font-mono-velo font-bold">Book Experience</a>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div class="border-b border-white/10 bg-[#0E0E14] py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <span class="text-xs font-mono-velo text-[#06B6D4] uppercase tracking-widest">CURATED HORSEPOWER RUNS</span>
+      <h1 class="text-4xl sm:text-6xl font-grotesk font-extrabold text-white mt-2">VIP Track & Canyon Escapes</h1>
+      <p class="text-zinc-400 max-w-xl mt-4 text-sm">Experience your dream hypercar on technical twisties and closed circuit apexes, flanked by our private chase car and telemetry crew.</p>
+    </div>
+  </div>
+
+  <section class="py-20 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <div class="glass-panel rounded-2xl p-6 border border-white/10 flex flex-col justify-between">
+      <div>
+        <div class="aspect-video rounded-xl overflow-hidden bg-zinc-950 mb-6">
+          <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Malibu Canyons" class="w-full h-full object-cover">
+        </div>
+        <span class="text-xs font-mono-velo text-[#06B6D4] uppercase">Scenic Coastal Sprint</span>
+        <h3 class="font-grotesk font-bold text-2xl text-white mt-1">Malibu & Mulholland Canyon Run</h3>
+        <p class="text-zinc-400 text-sm mt-3">4-hour guided convoy across Topanga and Decker Canyon with designated photography checkpoints and drone footage.</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+        <span class="font-grotesk font-bold text-xl text-white">$1,850</span>
+        <a href="book?car=CAR-01" class="btn-cyan text-xs font-mono-velo uppercase font-bold py-2 px-4">Book Run &rarr;</a>
+      </div>
+    </div>
+
+    <div class="glass-panel rounded-2xl p-6 border border-white/10 flex flex-col justify-between">
+      <div>
+        <div class="aspect-video rounded-xl overflow-hidden bg-zinc-950 mb-6">
+          <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Apex Track Day" class="w-full h-full object-cover">
+        </div>
+        <span class="text-xs font-mono-velo text-[#06B6D4] uppercase">Closed Circuit</span>
+        <h3 class="font-grotesk font-bold text-2xl text-white mt-1">Thermal Club Track Masterclass</h3>
+        <p class="text-zinc-400 text-sm mt-3">Full-day private pit pass at the Thermal Club circuit with professional telemetry coaching behind the wheel of a GT3 RS.</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+        <span class="font-grotesk font-bold text-xl text-white">$4,200</span>
+        <a href="book?car=CAR-03" class="btn-cyan text-xs font-mono-velo uppercase font-bold py-2 px-4">Book Run &rarr;</a>
+      </div>
+    </div>
+
+    <div class="glass-panel rounded-2xl p-6 border border-white/10 flex flex-col justify-between">
+      <div>
+        <div class="aspect-video rounded-xl overflow-hidden bg-zinc-950 mb-6">
+          <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Chauffeur Executive" class="w-full h-full object-cover">
+        </div>
+        <span class="text-xs font-mono-velo text-[#06B6D4] uppercase">Executive Chauffeur</span>
+        <h3 class="font-grotesk font-bold text-2xl text-white mt-1">Private FBO Tarmac Transfer</h3>
+        <p class="text-zinc-400 text-sm mt-3">Armed or discrete white-glove chauffeur in an extended Rolls-Royce Ghost or G63 AMG with champagne bar and Wi-Fi suite.</p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
+        <span class="font-grotesk font-bold text-xl text-white">$1,200</span>
+        <a href="book?car=CAR-06" class="btn-cyan text-xs font-mono-velo uppercase font-bold py-2 px-4">Book Run &rarr;</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-black text-zinc-500 text-xs font-mono-velo border-t border-white/10 text-center">
+    <p>VELOCITY &bull; VIP Track & Canyon Runs &bull; Factory Trained Lead Drivers</p>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
