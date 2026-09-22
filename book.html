@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Vehicle — VELOCITY Exotic Fleet OS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            veloDark: '#0A0A0B',
+            veloCard: '#121216',
+            veloCyan: '#06B6D4',
+            veloCobalt: '#2563EB'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0A0A0B] text-white selection:bg-[#06B6D4] selection:text-black">
+
+  <header class="sticky top-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#06B6D4] to-[#2563EB] p-[2px] flex items-center justify-center">
+          <div class="w-full h-full bg-[#0A0A0B] rounded-[10px] flex items-center justify-center font-grotesk font-black text-lg text-white">⚡</div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-grotesk font-bold text-xl tracking-tight text-white">VELOCITY.OS</span>
+          <span class="text-[9px] font-mono-velo tracking-widest text-[#06B6D4] uppercase">Fleet Dispatch</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="fleet" class="hover:text-[#06B6D4]">Fleet Showroom</a>
+        <a href="experience" class="hover:text-[#06B6D4]">Track & Canyon Runs</a>
+        <a href="insurance" class="hover:text-[#06B6D4]">Driver Verification</a>
+        <a href="book" class="text-[#06B6D4] font-semibold">Reserve Fleet</a>
+        <a href="admin" class="hover:text-[#06B6D4] text-xs font-mono-velo border border-white/10 px-3 py-1.5 rounded-lg">Fleet Tower [⚡]</a>
+      </nav>
+
+      <span class="text-xs font-mono-velo text-zinc-400">25+ Age Required</span>
+    </div>
+  </header>
+
+  <!-- Reservation Desk -->
+  <section class="py-16 max-w-4xl mx-auto px-6">
+    <div class="mb-10 text-center">
+      <span class="text-xs font-mono-velo text-[#06B6D4] uppercase tracking-widest">STEP 1 OF 2 &bull; DISPATCH INTAKE</span>
+      <h1 class="text-3xl sm:text-5xl font-grotesk font-bold text-white mt-2">Reserve Exotic Fleet Key</h1>
+      <p class="text-zinc-400 text-sm mt-3 max-w-lg mx-auto">Select your vehicle, choose tarmac or villa delivery, and lock in your reservation dates.</p>
+    </div>
+
+    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl relative">
+      <form id="velocity-booking-form" class="space-y-8">
+        
+        <!-- Step 1: Vehicle Selection -->
+        <div>
+          <label class="block text-xs font-mono-velo text-[#06B6D4] uppercase tracking-wider mb-2">1. Select Target Vehicle</label>
+          <select id="vehicle_select" required class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+            <!-- Dynamically populated -->
+          </select>
+        </div>
+
+        <!-- Step 2: Date Selection & Location -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-mono-velo text-zinc-400 uppercase tracking-wider mb-2">2. Pickup Date</label>
+            <input type="date" id="pickup_date" required class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+          </div>
+          <div>
+            <label class="block text-xs font-mono-velo text-zinc-400 uppercase tracking-wider mb-2">3. Return Date</label>
+            <input type="date" id="return_date" required class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono-velo text-zinc-400 uppercase tracking-wider mb-2">4. White-Glove Hand-Off Location</label>
+          <select id="delivery_location" required class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+            <option value="Miami Executive Airport (OPF FBO Tarmac)">Miami Executive Airport (OPF FBO Private Tarmac)</option>
+            <option value="Van Nuys Airport (VNY Signature Aviation)">Van Nuys Airport (VNY Signature Aviation FBO)</option>
+            <option value="Private Villa / Hotel Porte-Cochère Delivery">Private Villa / Luxury Hotel Porte-Cochère Delivery</option>
+            <option value="Velocity HQ Hangar Pickup (Direct Release)">Velocity HQ Hangar Pickup (Direct Release)</option>
+          </select>
+        </div>
+
+        <!-- Step 3: Client Info -->
+        <div class="border-t border-white/10 pt-6">
+          <label class="block text-xs font-mono-velo text-[#06B6D4] uppercase tracking-wider mb-4">5. Driver Credentials</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <input type="text" id="client_name" required placeholder="Driver Legal Name" class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+            </div>
+            <div>
+              <input type="email" id="client_email" required placeholder="Executive Email" class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+            </div>
+            <div>
+              <input type="tel" id="client_phone" required placeholder="Direct Mobile" class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#06B6D4]">
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Calculation Box -->
+        <div class="p-6 rounded-2xl bg-black/60 border border-[#06B6D4]/30 space-y-3">
+          <div class="flex justify-between items-center text-xs font-mono-velo text-zinc-400">
+            <span>Rental Duration:</span>
+            <span id="calc-days" class="text-white font-bold">3 Days</span>
+          </div>
+          <div class="flex justify-between items-center text-xs font-mono-velo text-zinc-400">
+            <span>Daily Rate:</span>
+            <span id="calc-daily-rate" class="text-white font-bold">$1,450 / day</span>
+          </div>
+          <div class="flex justify-between items-center text-xs font-mono-velo text-zinc-400">
+            <span>Escrow Security Deposit:</span>
+            <span id="calc-deposit" class="text-[#06B6D4] font-bold">$2,500 (Refundable upon vehicle return)</span>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex justify-between items-baseline">
+            <span class="font-grotesk font-bold text-lg text-white">Estimated Rental Total:</span>
+            <span id="calc-total" class="font-grotesk font-extrabold text-3xl text-[#06B6D4]">$4,350</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full btn-cyan justify-center py-4 text-sm font-mono-velo font-bold uppercase tracking-widest">
+          Request Fleet Key &bull; Transmit Dispatch &rarr;
+        </button>
+      </form>
+
+      <!-- Confirmation Overlay -->
+      <div id="booking-modal" class="hidden absolute inset-0 bg-[#0A0A0B]/95 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 flex flex-col items-center justify-center text-center space-y-6 z-20">
+        <div class="w-16 h-16 rounded-full bg-[#06B6D4]/20 border border-[#06B6D4] flex items-center justify-center text-2xl text-[#06B6D4]">
+          ⚡
+        </div>
+        <div>
+          <span class="text-xs font-mono-velo text-[#06B6D4] uppercase tracking-widest">DISPATCH AUTHORIZED</span>
+          <h2 class="text-3xl font-grotesk font-bold text-white mt-1">Key Reservation Transmitted</h2>
+          <p id="modal-res-id" class="text-sm font-mono-velo text-zinc-400 mt-2">Reservation: #RES-PENDING</p>
+        </div>
+        <p class="text-sm text-zinc-300 max-w-md">
+          Your exotic vehicle request has been transmitted to the Velocity Fleet Tower. Next step: confirm your driver license and insurance qualification.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="insurance" class="btn-cyan text-xs font-mono-velo font-bold uppercase">Submit Driver Verification &rarr;</a>
+          <a href="admin" class="btn-ghost-velo text-xs font-mono-velo">Inspect Fleet Tower OS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-black text-zinc-500 text-xs font-mono-velo border-t border-white/10 text-center">
+    <p>VELOCITY &bull; Exotic Fleet Operational System &bull; 25+ Age Requirement Strictly Enforced</p>
+  </footer>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('vehicle_select');
+      const pickup = document.getElementById('pickup_date');
+      const returnDate = document.getElementById('return_date');
+      const calcDays = document.getElementById('calc-days');
+      const calcRate = document.getElementById('calc-daily-rate');
+      const calcDeposit = document.getElementById('calc-deposit');
+      const calcTotal = document.getElementById('calc-total');
+
+      const vehicles = window.VelocityDB.getVehicles();
+
+      // Populate vehicles
+      vehicles.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.id;
+        opt.textContent = `${v.name} ($${v.daily_rate}/day &bull; ${v.horsepower} HP)`;
+        select.appendChild(opt);
+      });
+
+      // Default dates: tomorrow + 3 days
+      const tomorrow = new Date(Date.now() + 86400000);
+      const after3Days = new Date(Date.now() + 86400000 * 4);
+      pickup.min = tomorrow.toISOString().split('T')[0];
+      pickup.value = tomorrow.toISOString().split('T')[0];
+      returnDate.min = pickup.value;
+      returnDate.value = after3Days.toISOString().split('T')[0];
+
+      // Query param check
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('car')) {
+        select.value = params.get('car');
+      }
+
+      function updateMath() {
+        const selectedCar = vehicles.find(v => v.id === select.value) || vehicles[0];
+        const d1 = new Date(pickup.value);
+        const d2 = new Date(returnDate.value);
+        let days = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+        if (days < 1) days = 1;
+
+        calcDays.textContent = `${days} Days`;
+        calcRate.textContent = `$${selectedCar.daily_rate} / day`;
+        calcDeposit.textContent = `$${selectedCar.security_deposit} (Refundable upon vehicle return)`;
+        calcTotal.textContent = `$${(days * selectedCar.daily_rate).toLocaleString()}`;
+      }
+
+      select.addEventListener('change', updateMath);
+      pickup.addEventListener('change', () => {
+        returnDate.min = pickup.value;
+        if (returnDate.value < pickup.value) returnDate.value = pickup.value;
+        updateMath();
+      });
+      returnDate.addEventListener('change', updateMath);
+      updateMath();
+
+      // Form Submit
+      const form = document.getElementById('velocity-booking-form');
+      const modal = document.getElementById('booking-modal');
+      const modalId = document.getElementById('modal-res-id');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const selectedCar = vehicles.find(v => v.id === select.value) || vehicles[0];
+        const d1 = new Date(pickup.value);
+        const d2 = new Date(returnDate.value);
+        let days = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+        if (days < 1) days = 1;
+
+        const resData = {
+          client_name: document.getElementById('client_name').value,
+          client_email: document.getElementById('client_email').value,
+          client_phone: document.getElementById('client_phone').value,
+          vehicle_name: selectedCar.name,
+          pickup_date: pickup.value,
+          return_date: returnDate.value,
+          duration_days: days,
+          daily_rate: selectedCar.daily_rate,
+          total_price: days * selectedCar.daily_rate,
+          security_deposit: selectedCar.security_deposit,
+          delivery_location: document.getElementById('delivery_location').value
+        };
+
+        const newRec = window.VelocityDB.addReservation(resData);
+        modalId.textContent = `Reservation #${newRec.id} &bull; ${newRec.vehicle_name}`;
+        modal.classList.remove('hidden');
+        window.showToast(`Key Reserved: #${newRec.id}`, 'cyan');
+      });
+    });
+  </script>
+</body>
+</html>
