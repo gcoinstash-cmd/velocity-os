@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet Command Tower & Dispatch OS — VELOCITY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            veloDark: '#0A0A0B',
+            veloCard: '#121216',
+            veloCyan: '#06B6D4',
+            veloCobalt: '#2563EB'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0A0A0B] text-white selection:bg-[#06B6D4] selection:text-black">
+
+  <header class="border-b border-white/10 bg-[#0E0E14] px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#06B6D4] to-[#2563EB] text-white font-grotesk font-black flex items-center justify-center">⚡</div>
+          <span class="font-grotesk font-bold text-lg text-white">VELOCITY</span>
+        </a>
+        <span class="text-zinc-600 font-mono-velo">/</span>
+        <span class="text-xs font-mono-velo text-[#06B6D4]">FLEET TOWER OS</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="/" class="text-xs font-mono-velo text-zinc-400 hover:text-white">&larr; Return to Showroom</a>
+        <button id="logout-btn" class="hidden text-xs font-mono-velo text-rose-400 hover:underline">Lock Tower</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Gate Modal (1-Click Cheat Code Passkey: velocity2026) -->
+  <div id="login-screen" class="min-h-[85vh] flex items-center justify-center px-6 py-12">
+    <div class="w-full max-w-md glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 shadow-2xl space-y-6 text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-[#06B6D4]/10 border border-[#06B6D4]/40 flex items-center justify-center text-[#06B6D4]">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      </div>
+
+      <div>
+        <h1 class="text-2xl font-grotesk font-bold text-white">Fleet Tower Command</h1>
+        <p class="text-xs text-zinc-400 font-mono-velo mt-1">Authorized Hangar Directors & Fleet Managers Only</p>
+      </div>
+
+      <!-- 1-Click Cheat Code Button -->
+      <div class="p-4 rounded-xl bg-black/60 border border-[#06B6D4]/30 space-y-2">
+        <span class="text-[11px] font-mono-velo text-zinc-400 block">⚡ PROSPECTIVE BUYER PREVIEW CHEAT CODE</span>
+        <button type="button" id="auto-fill-passcode" class="w-full py-2.5 rounded-lg bg-[#06B6D4]/20 hover:bg-[#06B6D4]/30 border border-[#06B6D4] text-xs font-mono-velo text-[#06B6D4] font-bold transition-all flex items-center justify-center gap-2">
+          <span>⚡ Auto-Fill Demo Passcode</span>
+          <span class="text-[10px] text-zinc-400">(velocity2026)</span>
+        </button>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div>
+          <input type="password" id="passcode-input" placeholder="Enter Fleet Tower Passcode" required class="w-full bg-[#0D0D10] border border-white/15 rounded-xl px-4 py-3 text-sm text-center tracking-widest text-white focus:outline-none focus:border-[#06B6D4]">
+        </div>
+        <button type="submit" class="w-full btn-cyan justify-center py-3 text-xs font-mono-velo font-bold uppercase tracking-wider">
+          Access Fleet Radar &rarr;
+        </button>
+      </form>
+      <p id="login-error" class="hidden text-xs text-rose-400 font-mono-velo">Invalid passcode. Try demo passcode: velocity2026</p>
+    </div>
+  </div>
+
+  <!-- Authenticated Command Center -->
+  <main id="admin-dashboard" class="hidden max-w-7xl mx-auto px-6 py-10 space-y-10">
+    
+    <!-- Top Stats Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="glass-panel p-6 rounded-2xl border border-white/10">
+        <span class="text-xs font-mono-velo text-zinc-400 uppercase">Active Reservations</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span id="stat-total-res" class="font-grotesk text-3xl font-bold text-white">0</span>
+          <span class="text-xs font-mono-velo text-emerald-400">100% On-Time</span>
+        </div>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border border-white/10">
+        <span class="text-xs font-mono-velo text-zinc-400 uppercase">Rental Revenue (Committed)</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span id="stat-total-revenue" class="font-grotesk text-3xl font-bold text-[#06B6D4]">$0</span>
+          <span class="text-xs font-mono-velo text-zinc-400">Paid upfront</span>
+        </div>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border border-white/10">
+        <span class="text-xs font-mono-velo text-zinc-400 uppercase">Escrow Deposits Held</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span id="stat-total-escrow" class="font-grotesk text-3xl font-bold text-white">$0</span>
+          <span class="text-xs font-mono-velo text-[#06B6D4]">Secured</span>
+        </div>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl border border-white/10">
+        <span class="text-xs font-mono-velo text-zinc-400 uppercase">Hangar Fleet Vehicles</span>
+        <div class="flex items-baseline justify-between mt-2">
+          <span class="font-grotesk text-3xl font-bold text-white">6</span>
+          <span class="text-xs font-mono-velo text-emerald-400">5 Ready / 1 Rented</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservations Table -->
+    <div class="glass-panel rounded-3xl border border-white/10 p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="font-grotesk text-2xl font-bold text-white">Fleet Reservation Radar</h2>
+          <p class="text-xs text-zinc-400 font-mono-velo mt-1">Live incoming client bookings, delivery FBO coordinates & escrow holds</p>
+        </div>
+        <div class="flex gap-3">
+          <button id="export-csv-btn" class="btn-ghost-velo text-xs font-mono-velo py-2 px-4">
+            Export CSV
+          </button>
+          <a href="book" target="_blank" class="btn-cyan text-xs font-mono-velo font-bold py-2 px-4">
+            + New Dispatch
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="border-b border-white/10 text-xs font-mono-velo text-zinc-400 uppercase">
+            <tr>
+              <th class="py-3 px-4">ID</th>
+              <th class="py-3 px-4">Driver</th>
+              <th class="py-3 px-4">Target Vehicle</th>
+              <th class="py-3 px-4">Dates & Duration</th>
+              <th class="py-3 px-4">Rental Total</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="res-tbody" class="divide-y divide-white/5 font-mono-velo text-xs">
+            <!-- Dynamic Injection -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="res-empty-state" class="hidden py-12 text-center space-y-3">
+        <h3 class="font-grotesk text-lg font-bold text-white">No Dispatches Scheduled</h3>
+        <p class="text-xs text-zinc-500 font-mono-velo">All fleet vehicles are presently parked in the main hangar.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const DEMO_PASSCODE = 'velocity2026';
+      const loginScreen = document.getElementById('login-screen');
+      const dashboard = document.getElementById('admin-dashboard');
+      const passInput = document.getElementById('passcode-input');
+      const autoFillBtn = document.getElementById('auto-fill-passcode');
+      const loginForm = document.getElementById('login-form');
+      const loginError = document.getElementById('login-error');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      autoFillBtn.addEventListener('click', () => {
+        passInput.value = DEMO_PASSCODE;
+        authenticate();
+      });
+
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        authenticate();
+      });
+
+      function authenticate() {
+        if (passInput.value.trim() === DEMO_PASSCODE) {
+          sessionStorage.setItem('velocity_admin_auth', 'true');
+          loginScreen.classList.add('hidden');
+          dashboard.classList.remove('hidden');
+          logoutBtn.classList.remove('hidden');
+          renderData();
+          window.showToast('Fleet Tower Unlocked &bull; Radar Live', 'cyan');
+        } else {
+          loginError.classList.remove('hidden');
+        }
+      }
+
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('velocity_admin_auth');
+        window.location.reload();
+      });
+
+      if (sessionStorage.getItem('velocity_admin_auth') === 'true') {
+        loginScreen.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+        logoutBtn.classList.remove('hidden');
+        renderData();
+      }
+
+      function renderData() {
+        const reservations = window.VelocityDB.getReservations();
+
+        // Update Stats
+        document.getElementById('stat-total-res').textContent = reservations.length;
+        const totalRev = reservations.reduce((sum, r) => sum + (Number(r.total_price) || 0), 0);
+        document.getElementById('stat-total-revenue').textContent = `$${totalRev.toLocaleString()}`;
+        const totalEscrow = reservations.reduce((sum, r) => sum + (Number(r.security_deposit) || 0), 0);
+        document.getElementById('stat-total-escrow').textContent = `$${totalEscrow.toLocaleString()}`;
+
+        const tbody = document.getElementById('res-tbody');
+        const emptyState = document.getElementById('res-empty-state');
+        tbody.innerHTML = '';
+
+        if (reservations.length === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+          reservations.forEach(r => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-white/[0.02] transition-colors';
+            tr.innerHTML = `
+              <td class="py-3 px-4 font-bold text-[#06B6D4]">#${r.id}</td>
+              <td class="py-3 px-4">
+                <div class="font-bold text-white">${r.client_name}</div>
+                <div class="text-[10px] text-zinc-500">${r.client_email} &bull; ${r.client_phone}</div>
+              </td>
+              <td class="py-3 px-4">
+                <div class="text-zinc-200 font-bold">${r.vehicle_name}</div>
+                <div class="text-[10px] text-zinc-400">${r.delivery_location}</div>
+              </td>
+              <td class="py-3 px-4 text-zinc-300">
+                ${r.pickup_date} &rarr; ${r.return_date} (${r.duration_days}d)
+              </td>
+              <td class="py-3 px-4 text-emerald-400 font-bold">$${Number(r.total_price).toLocaleString()}</td>
+              <td class="py-3 px-4">
+                <span class="px-2 py-0.5 rounded text-[10px] ${
+                  r.status === 'Confirmed' 
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
+                    : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                }">${r.status}</span>
+              </td>
+              <td class="py-3 px-4 text-right">
+                <button onclick="deleteRes('${r.id}')" class="text-rose-400 hover:text-rose-300 text-xs">Cancel</button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+      }
+
+      window.deleteRes = (id) => {
+        if (confirm(`Cancel reservation #${id}?`)) {
+          window.VelocityDB.deleteReservation(id);
+          renderData();
+          window.showToast(`Reservation #${id} Cancelled`, 'cyan');
+        }
+      };
+
+      // CSV Export
+      document.getElementById('export-csv-btn').addEventListener('click', () => {
+        const reservations = window.VelocityDB.getReservations();
+        let csv = 'ReservationID,Driver,Email,Phone,Vehicle,PickupDate,ReturnDate,Days,TotalPrice,Deposit,DeliveryLocation,Status\n';
+        reservations.forEach(r => {
+          csv += `"${r.id}","${r.client_name}","${r.client_email}","${r.client_phone}","${r.vehicle_name}","${r.pickup_date}","${r.return_date}","${r.duration_days}","${r.total_price}","${r.security_deposit}","${r.delivery_location}","${r.status}"\n`;
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `velocity-reservations-${new Date().toISOString().split('T')[0]}.csv`;
+        a.click();
+        window.showToast('CSV Fleet Export Generated', 'cyan');
+      });
+    });
+  </script>
+</body>
+</html>
