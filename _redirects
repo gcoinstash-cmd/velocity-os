@@ -1,0 +1,12 @@
+# Clean extensionless URLs for Render & Netlify
+/fleet.html        /fleet        301!
+/book.html         /book         301!
+/experience.html   /experience   301!
+/insurance.html    /insurance    301!
+/admin.html        /admin        301!
+
+/fleet             /fleet.html        200
+/book              /book.html         200
+/experience        /experience.html   200
+/insurance         /insurance.html    200
+/admin             /admin.html        200
